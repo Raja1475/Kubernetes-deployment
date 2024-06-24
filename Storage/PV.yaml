@@ -7,7 +7,7 @@ spec:
     storage: 20Gi  # Adjust size as needed
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   awsElasticBlockStore:
     volumeID: vol-00c7233afebe84113
     fsType: ext4  # Filesystem type (optional, defaults to ext4)

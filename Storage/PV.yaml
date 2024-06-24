@@ -6,7 +6,6 @@ spec:
   storageClassName: ""
   capacity:
     storage: 20Gi  # Adjust size as needed
-  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   awsElasticBlockStore:

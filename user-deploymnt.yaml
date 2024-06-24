@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  namespace: roboshop
+  labels:
+    tier: app
+    app: user
+    project: roboshop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: app
+      app: user
+      project: roboshop
+  template:
+    metadata:
+      labels:
+        tier: app
+        app: user
+        project: roboshop
+    spec:
+      containers:
+      - name: user
+        image: joindevops/user:1.0.0
+        envFrom:
+        - configMapRef:
+            name: user
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user
+  namespace: roboshop
+spec:
+  selector:
+    tier: app
+    app: user
+    project: roboshop
+  ports:
+  - name: user-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user
+  namespace: roboshop
+data:
+  MONGO: "true"
+  REDIS_HOST: "redis"
+  MONGO_URL: "mongodb://mongodb:27017/user"

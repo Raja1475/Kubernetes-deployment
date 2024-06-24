@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: ebs-static-pv
 spec:
+  storageClassName: ""
   capacity:
     storage: 20Gi  # Adjust size as needed
   volumeMode: Filesystem

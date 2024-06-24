@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static-pvc
+spec:
+  accessModes:
+    - ReadWritemany
+  resources:
+    requests:
+      storage: 3Gi
